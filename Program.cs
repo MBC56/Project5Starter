@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using CourseCatalog.Data;
+using CourseCatalog.Models;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -28,3 +31,10 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+using (var context = new DbContext())
+{
+    context.Database.EnsureDeleted(); 
+    context.Database.EnsureCreated(); 
+
+    SeedData.Seed(context); 
+}

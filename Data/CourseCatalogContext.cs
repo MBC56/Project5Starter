@@ -16,4 +16,5 @@ namespace CourseCatalog.Data
 
         public DbSet<CourseCatalog.Models.Course> Course { get; set; } = default!;
     }
+    
 }
